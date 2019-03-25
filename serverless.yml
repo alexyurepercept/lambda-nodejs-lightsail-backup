@@ -1,0 +1,23 @@
+service: lightsail-backup-serverless
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  memorySize: 256
+  timeout: 60
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "lightsail:DeleteInstanceSnapshot"
+        - "lightsail:GetInstanceSnapshots"
+        - "lightsail:CreateInstanceSnapshot"
+        - "lightsail:GetInstanceSnapshot"
+      Resource: "*"
+
+functions:
+  backupHandler:
+    handler: index.handler
+    events:
+      - schedule: cron(0 14 * * ? *)
+    environment:
+      INSTANCE_NAME: ${opt:instance_name}
