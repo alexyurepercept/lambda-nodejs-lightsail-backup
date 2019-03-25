@@ -5,8 +5,8 @@ exports.handler = (event, context, callback) => {
   // Define your backups
   // ================================
 
-  const instanceName = "LAMP_Stack-2GB-Frankfurt-1" // Put your instance name here http://take.ms/dChbs
-  const backupDaysMax = 7; // keep at least 7 daily backups 
+  const instanceName = process.env.INSTANCE_NAME; // Put your instance name here http://take.ms/dChbs
+  const backupDaysMax = 7; // keep at least 7 daily backups
   const backupWeeksMax = 4; // keep at least 4  weekly  backups
   const backupMonthsMax = 3; // keep at least 3  monthly  backups
 
