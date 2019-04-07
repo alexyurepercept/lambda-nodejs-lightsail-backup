@@ -6,9 +6,9 @@ exports.handler = (event, context, callback) => {
   // ================================
 
   const instanceName = process.env.INSTANCE_NAME; // Put your instance name here http://take.ms/dChbs
-  const backupDaysMax = 7; // keep at least 7 daily backups
-  const backupWeeksMax = 4; // keep at least 4  weekly  backups
-  const backupMonthsMax = 3; // keep at least 3  monthly  backups
+  const backupDaysMax = parseInt(process.env.BACKUP_DAYS); // keep at least 7 daily backups
+  const backupWeeksMax = parseInt(process.env.BACKUP_WEEKS); // keep at least 4  weekly  backups
+  const backupMonthsMax = parseInt(process.env.BACKUP_MONTHS); // keep at least 3  monthly  backups
 
   // ================================
   // Unique short tag for snapshots

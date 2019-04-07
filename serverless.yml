@@ -20,4 +20,7 @@ functions:
     events:
       - schedule: cron(0 14 * * ? *)
     environment:
-      INSTANCE_NAME: ${opt:instance_name}
+      INSTANCE_NAME: ${file(./config.json):${opt:stage}.instanceName}
+      BACKUP_DAYS: ${file(./config.json):${opt:stage}.backupDays}
+      BACKUP_WEEKS: ${file(./config.json):${opt:stage}.backupWeeks}
+      BACKUP_MONTHS: ${file(./config.json):${opt:stage}.backupMonths}

@@ -19,14 +19,31 @@ We will use the AWS Lambda.
 
 ## Deploy
 
-<pre><code>
-        
-        const backupDaysMax = 7; // keep at least 7 daily backups 
-        
-        const backupWeeksMax = 4; // keep at least 4  weekly  backups
-        
-        const backupMonthsMax = 3; // keep at least 3  monthly  backups
-</code></pre>
+Create config.json in the project folder
+
+```
+{
+        "<stage>": {
+                "backupDays": <backup_days>,
+                "backupWeeks": <backup_weeks>,
+                "backupMonths": <backup_months>,
+                "instanceName": "<instance_name>"
+        }
+}
+```
+
+An example would like following
+
+```
+{
+        "dev": {
+                "backupDays": 7, // keep at least 7 daily backups
+                "backupWeeks": 4, // keep at least 4  weekly  backups
+                "backupMonths": 3, // keep at least 3  monthly  backups
+                "instanceName": "lightsail-instance"  // the name of the lightsail instance
+        }
+}
+```
 
 ```
 serverless deploy --stage <stage> --region <region> --instance_name <instance_name_to_backup>
